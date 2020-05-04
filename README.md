@@ -58,6 +58,17 @@ Same server as before
  Total rate: 21474836480 bytes transfered in 4.737 seconds - 4.533 GB/sec
 ```
 
+## Google Cloud Platform
+
+Between two n1-standad-1 instances in same zone
+
+```
+java -jar StoatClient_deploy.jar 10.128.0.8 11111 20 20
+Total rate: 21474836480 bytes transfered in 90.539 seconds - 237.189 MB/sec
+```
+
+
+
 # Future Features
 
 If anyone actually wants me to, I could turn this into a way more cool tool.
