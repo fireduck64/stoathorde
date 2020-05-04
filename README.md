@@ -58,4 +58,13 @@ Same server as before
  Total rate: 21474836480 bytes transfered in 4.737 seconds - 4.533 GB/sec
 ```
 
+# Future Features
+
+If anyone actually wants me to, I could turn this into a way more cool tool.
+I'm imagining a fabric saturation tool that uses a combo of specifided hosts
+and multicast to find peers.  Then it connects to peers and tries to push as much data
+as possible around the network.  Then using those same channels statistics could be exchanged
+to show to total bandwidth the tool was able to use.  Or each node could send logs to something for collection.
+
+Either way, it would be a way to use whatever machines were availible to stress test a network.
 
