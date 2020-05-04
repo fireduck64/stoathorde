@@ -3,6 +3,12 @@
 This is a super simple network transit test between two points.
 You configure the amount of data to send, the number of connections to use.
 
+It uses random data, build the data is created once per connection and then repeated
+to avoid CPU strain.  However, if the connection goes via a VPN with a sufficently large compression
+window (32mb) it might actually manage to compress it via the repeats.  This seems unlikely.
+
+Data flows from server to client.  The server just sends data to connecting clients until they go away.
+
 # Building
 
 To build:
@@ -11,6 +17,8 @@ To build:
 ```
   bazel build :all :StoatClient_deploy.jar :StoatServer_deploy.jar
 ```
+
+If you don't want to build to mess with bazel, there are built jar files attached to the release on github.
 
 # Running
 
@@ -29,6 +37,7 @@ Or if using the deploy jar files:
 
 # Examples:
 
+## On my local 1gb network
 On one machine:
 
 ```
@@ -37,8 +46,16 @@ bazel-bin/StoatServer 11111
 
 On another machine:
 ```
-java -jar StoatClient_deploy.jar ogog.1209k.com 11111 10 10
-Total rate: 10737418240 bytes transfered in 109.219 seconds - 98.311 MB/sec
+ java -jar StoatClient_deploy.jar ogog.1209k.com 11111 10 10
+ Total rate: 10737418240 bytes transfered in 109.219 seconds - 98.311 MB/sec
+```
+
+## A machine talking to itself
+
+Same server as before
+```
+ bazel-bin/StoatClient localhost 11111 20 20
+ Total rate: 21474836480 bytes transfered in 4.737 seconds - 4.533 GB/sec
 ```
 
 
